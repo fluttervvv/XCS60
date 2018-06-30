@@ -15,6 +15,4 @@ public class ArrestLocalegetByConRequest {
 		this.localeID = localeID;
 	}
 	
-	
-	
 }

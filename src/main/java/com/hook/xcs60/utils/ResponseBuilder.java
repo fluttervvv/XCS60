@@ -13,6 +13,16 @@ public  class ResponseBuilder {
 		return b;
 	}
 	
+	public static  BaseApiResponse Success(){
+		BaseApiErrorResponse b = new BaseApiErrorResponse();
+		b.setMsg("Complete");
+		b.setIsSuccess(true);
+		BaseApiResponse o = new BaseApiResponse();
+		o.setIsSuccess(false);
+		o.setResponseData(b);
+		return o;
+	}
+	
 	
 	public static  BaseApiResponse Error(String msg){
 		BaseApiErrorResponse b = new BaseApiErrorResponse();

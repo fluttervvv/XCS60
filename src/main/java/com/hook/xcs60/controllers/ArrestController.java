@@ -13,6 +13,7 @@ import com.hook.xcs60.dao.ArrestRepository;
 import com.hook.xcs60.dto.BaseApiResponse;
 import com.hook.xcs60.dto.KeywordRequest;
 import com.hook.xcs60.model.Arrest;
+import com.hook.xcs60.model.OpsArrest;
 import com.hook.xcs60.utils.ResponseBuilder;
 
 @RestController
@@ -25,7 +26,7 @@ public class ArrestController {
 	 @RequestMapping("/greeting")
 	    public String greeting(@RequestParam(value="name", defaultValue="World") String name) {
 		 
-		 Arrest aArrest = new Arrest(); 
+		 OpsArrest aArrest = new OpsArrest(); 
 		 
 		 aArrest.setArrestCode("11111111111111234563");
 		 aArrest.setArrestDate(new Date());
@@ -33,8 +34,8 @@ public class ArrestController {
 		 aArrest.setArrestStation("--");
 		 aArrest.setArrestDesc("dddd");
 		 aArrest.setOccurrenceDate(new Date());
-		 aArrest.setHaveCulprit(false);
-		 aArrest.setIsActive(false);
+//		 aArrest.setHaveCulprit(false);
+//		 aArrest.setIsActive(false);
 		 
 		 arrestRepository.save(aArrest);
 		 
@@ -45,11 +46,12 @@ public class ArrestController {
 	 
 	 @RequestMapping("/ArrestgetByKeyword")
 	 public Object ArrestgetByKeyword(@RequestBody KeywordRequest keywordRequest) {
-		 if(1==2) {
-			 return ResponseBuilder.Success((List<Arrest>) arrestRepository.findByKeyword(keywordRequest.getTextsearch()));
-		 }else {
-			 return ResponseBuilder.Error("invalid xxxxx");
+		 try {
+			 return ResponseBuilder.Success((List<OpsArrest>) arrestRepository.findAll());
+		 }catch(Exception e) {
+			 return ResponseBuilder.Error(e.getMessage());
 		 }
+		 
 	 }
 	 
 

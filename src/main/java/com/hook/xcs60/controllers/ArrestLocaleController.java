@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.hook.xcs60.dao.ArrestLocaleRepository;
 import com.hook.xcs60.dto.KeywordRequest;
 import com.hook.xcs60.model.ArrestLocale;
+import com.hook.xcs60.model.OpsArrestLocale;
 import com.hook.xcs60.utils.ResponseBuilder;
 
 
@@ -24,17 +25,17 @@ public class ArrestLocaleController {
 	 @RequestMapping("/ArrestLocalegetByCon")
 	 public Object ArrestgetByKeyword(@RequestBody KeywordRequest keywordRequest) {
 		 try {
-			 return ResponseBuilder.Success((List<ArrestLocale>) arrestLocaleRepository.findAll());
+			 return ResponseBuilder.Success((List<OpsArrestLocale>) arrestLocaleRepository.findAll());
 		 }catch (Exception e) {
 			 return ResponseBuilder.Error(e.getMessage());
 		 }
 	 }
 	 
-	 @RequestMapping("/ArrestStaffinsAll")
-	 public Object ArrestStaffinsAll(@RequestBody ArrestLocale arrestLocale) {
+	 @RequestMapping("/ArrestLocaleinsAll")
+	 public Object ArrestLocaleinsAll(@RequestBody OpsArrestLocale arrestLocale) {
 		 try {
-			 ArrestLocale saved = arrestLocaleRepository.save(arrestLocale);
-			 return ResponseBuilder.Success(saved);
+			 OpsArrestLocale saved = arrestLocaleRepository.save(arrestLocale);
+			 return ResponseBuilder.Success();
 		 }catch (Exception e) {
 			 return ResponseBuilder.Error(e.getMessage());
 		 }
