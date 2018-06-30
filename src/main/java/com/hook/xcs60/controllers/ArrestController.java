@@ -16,7 +16,7 @@ import com.hook.xcs60.model.Arrest;
 import com.hook.xcs60.utils.ResponseBuilder;
 
 @RestController
-public class HomeController {
+public class ArrestController {
 
 	
 	@Autowired
