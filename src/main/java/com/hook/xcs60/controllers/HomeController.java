@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hook.xcs60.dao.ArrestRepository;
+import com.hook.xcs60.dto.BaseApiResponse;
 import com.hook.xcs60.dto.KeywordRequest;
 import com.hook.xcs60.model.Arrest;
+import com.hook.xcs60.utils.ResponseBuilder;
 
 @RestController
 public class HomeController {
@@ -42,8 +44,12 @@ public class HomeController {
 	    }
 	 
 	 @RequestMapping("/ArrestgetByKeyword")
-	 public List<Arrest> ArrestgetByKeyword(@RequestBody KeywordRequest keywordRequest) {
-		 return (List<Arrest>) arrestRepository.findByKeyword(keywordRequest.getTextsearch());
+	 public Object ArrestgetByKeyword(@RequestBody KeywordRequest keywordRequest) {
+		 if(1==2) {
+			 return ResponseBuilder.Success((List<Arrest>) arrestRepository.findByKeyword(keywordRequest.getTextsearch()));
+		 }else {
+			 return ResponseBuilder.Error("invalid xxxxx");
+		 }
 	 }
 	 
 
