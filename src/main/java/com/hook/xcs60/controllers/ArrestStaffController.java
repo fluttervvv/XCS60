@@ -19,17 +19,17 @@ public class ArrestStaffController {
 	ArrestStaffRepository arrestStaffRepository;
 	
 	@RequestMapping("/ArrestStaffgetByCon")
-	 public Object ArrestStaffgetByCon(@RequestBody ArrestStaffgetByConRequest request) {
+	public Object ArrestStaffgetByCon(@RequestBody ArrestStaffgetByConRequest request) {
 		try {
 		 return ResponseBuilder.Success((List<OpsArrestStaff>) arrestStaffRepository.findByStaffID(request.getStaffID()));
 		}catch (Exception e) {
 			return ResponseBuilder.Error(e.getMessage());
 		}
 
-	 }
+	}
 	
 	@RequestMapping("/ArrestStaffinsAll")
-	 public Object ArrestStaffinsAll(@RequestBody OpsArrestStaff request) {
+	public Object ArrestStaffinsAll(@RequestBody OpsArrestStaff request) {
 		 try {
 			 request.setIsActive((short)1);
 			 arrestStaffRepository.save(request);
@@ -37,7 +37,7 @@ public class ArrestStaffController {
 		 }catch (Exception e) {
 			 return ResponseBuilder.Error(e.getMessage());
 		 }
-	 }
+	}
 	
 	@RequestMapping("/ArrestStaffupdByCon")
 	public Object ArrestStaffupdByCon(@RequestBody OpsArrestStaff request) {
@@ -45,6 +45,7 @@ public class ArrestStaffController {
 			 if(request != null && request.getStaffID() != null) {
 				 List<OpsArrestStaff> opsArrestStaffList = arrestStaffRepository.findByStaffID(request.getStaffID());
 				 if(opsArrestStaffList != null && opsArrestStaffList.size() > 0) {
+					 request.setIsActive(opsArrestStaffList.get(0).getIsActive());
 					 arrestStaffRepository.save(request);
 					 return ResponseBuilder.Success();
 				 }
