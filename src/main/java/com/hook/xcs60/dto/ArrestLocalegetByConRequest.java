@@ -4,14 +4,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ArrestLocalegetByConRequest {
 	
-	String localeID ;
+	Long localeID ;
 
-	public String getLocaleID() {
+	public Long getLocaleID() {
 		return localeID;
 	}
 	
 	@JsonProperty("LocaleID")
-	public void setLocaleID(String localeID) {
+	public void setLocaleID(Long localeID) {
 		this.localeID = localeID;
 	}
 	

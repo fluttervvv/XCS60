@@ -21,15 +21,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
+
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 /**
  *
  * @author Pratin
  */
 @Entity
-@Table(schema= "ILLEGAL60" ,name = "ops_arrest")
+@Table(schema= "ILLEGAL60" ,name = "\"ops_arrest\"")
+@JsonNaming(PropertyNamingStrategy.UpperCamelCaseStrategy.class)
 public class OpsArrest implements Serializable {
 
     private static final long serialVersionUID = 1L;

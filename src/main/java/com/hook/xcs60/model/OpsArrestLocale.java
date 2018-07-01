@@ -14,42 +14,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 /**
  *
  * @author Pratin
  */
 @Entity
-@Table(name = "ops_arrest_locale", catalog = "", schema = "ILLEGAL60")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "OpsArrestLocale.findAll", query = "SELECT o FROM OpsArrestLocale o")
-    , @NamedQuery(name = "OpsArrestLocale.findByLocaleID", query = "SELECT o FROM OpsArrestLocale o WHERE o.localeID = :localeID")
-    , @NamedQuery(name = "OpsArrestLocale.findByIsArrest", query = "SELECT o FROM OpsArrestLocale o WHERE o.isArrest = :isArrest")
-    , @NamedQuery(name = "OpsArrestLocale.findByGps", query = "SELECT o FROM OpsArrestLocale o WHERE o.gps = :gps")
-    , @NamedQuery(name = "OpsArrestLocale.findByLocation", query = "SELECT o FROM OpsArrestLocale o WHERE o.location = :location")
-    , @NamedQuery(name = "OpsArrestLocale.findByAddress", query = "SELECT o FROM OpsArrestLocale o WHERE o.address = :address")
-    , @NamedQuery(name = "OpsArrestLocale.findByVillage", query = "SELECT o FROM OpsArrestLocale o WHERE o.village = :village")
-    , @NamedQuery(name = "OpsArrestLocale.findByBuilding", query = "SELECT o FROM OpsArrestLocale o WHERE o.building = :building")
-    , @NamedQuery(name = "OpsArrestLocale.findByFloor", query = "SELECT o FROM OpsArrestLocale o WHERE o.floor = :floor")
-    , @NamedQuery(name = "OpsArrestLocale.findByRoom", query = "SELECT o FROM OpsArrestLocale o WHERE o.room = :room")
-    , @NamedQuery(name = "OpsArrestLocale.findByAlley", query = "SELECT o FROM OpsArrestLocale o WHERE o.alley = :alley")
-    , @NamedQuery(name = "OpsArrestLocale.findByRoad", query = "SELECT o FROM OpsArrestLocale o WHERE o.road = :road")
-    , @NamedQuery(name = "OpsArrestLocale.findBySubDistrict", query = "SELECT o FROM OpsArrestLocale o WHERE o.subDistrict = :subDistrict")
-    , @NamedQuery(name = "OpsArrestLocale.findByDistrictCode", query = "SELECT o FROM OpsArrestLocale o WHERE o.districtCode = :districtCode")
-    , @NamedQuery(name = "OpsArrestLocale.findByDistrict", query = "SELECT o FROM OpsArrestLocale o WHERE o.district = :district")
-    , @NamedQuery(name = "OpsArrestLocale.findByProvinceCode", query = "SELECT o FROM OpsArrestLocale o WHERE o.provinceCode = :provinceCode")
-    , @NamedQuery(name = "OpsArrestLocale.findByProvince", query = "SELECT o FROM OpsArrestLocale o WHERE o.province = :province")
-    , @NamedQuery(name = "OpsArrestLocale.findByZipCode", query = "SELECT o FROM OpsArrestLocale o WHERE o.zipCode = :zipCode")
-    , @NamedQuery(name = "OpsArrestLocale.findByPolicestation", query = "SELECT o FROM OpsArrestLocale o WHERE o.policestation = :policestation")
-    , @NamedQuery(name = "OpsArrestLocale.findByIsActive", query = "SELECT o FROM OpsArrestLocale o WHERE o.isActive = :isActive")})
+@Table(name = "\"ops_arrest_locale\"", catalog = "", schema = "ILLEGAL60")
+@JsonNaming(PropertyNamingStrategy.UpperCamelCaseStrategy.class)
 public class OpsArrestLocale implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -118,7 +97,6 @@ public class OpsArrestLocale implements Serializable {
         return localeID;
     }
     
-    @JsonProperty("LocaleID")
     public void setLocaleID(Long localeID) {
         this.localeID = localeID;
     }
@@ -127,7 +105,6 @@ public class OpsArrestLocale implements Serializable {
         return isArrest;
     }
     
-    @JsonProperty("IsArrest")
     public void setIsArrest(Short isArrest) {
         this.isArrest = isArrest;
     }
@@ -136,7 +113,6 @@ public class OpsArrestLocale implements Serializable {
         return gps;
     }
 
-    @JsonProperty("GPS")
     public void setGps(String gps) {
         this.gps = gps;
     }
@@ -145,7 +121,6 @@ public class OpsArrestLocale implements Serializable {
         return location;
     }
 
-    @JsonProperty("Location")
     public void setLocation(String location) {
         this.location = location;
     }
@@ -154,7 +129,6 @@ public class OpsArrestLocale implements Serializable {
         return address;
     }
     
-    @JsonProperty("Address")
     public void setAddress(String address) {
         this.address = address;
     }
@@ -163,7 +137,6 @@ public class OpsArrestLocale implements Serializable {
         return village;
     }
     
-    @JsonProperty("Village")
     public void setVillage(String village) {
         this.village = village;
     }
@@ -172,7 +145,6 @@ public class OpsArrestLocale implements Serializable {
         return building;
     }
     
-    @JsonProperty("Building")
     public void setBuilding(String building) {
         this.building = building;
     }
@@ -181,7 +153,6 @@ public class OpsArrestLocale implements Serializable {
         return floor;
     }
     
-    @JsonProperty("Floor")
     public void setFloor(String floor) {
         this.floor = floor;
     }
@@ -190,7 +161,6 @@ public class OpsArrestLocale implements Serializable {
         return room;
     }
     
-    @JsonProperty("Room")
     public void setRoom(String room) {
         this.room = room;
     }
@@ -199,7 +169,6 @@ public class OpsArrestLocale implements Serializable {
         return alley;
     }
     
-    @JsonProperty("Alley")
     public void setAlley(String alley) {
         this.alley = alley;
     }
@@ -208,7 +177,6 @@ public class OpsArrestLocale implements Serializable {
         return road;
     }
     
-    @JsonProperty("Road")
     public void setRoad(String road) {
         this.road = road;
     }
@@ -217,7 +185,6 @@ public class OpsArrestLocale implements Serializable {
         return subDistrict;
     }
     
-    @JsonProperty("SubDistrict")
     public void setSubDistrict(String subDistrict) {
         this.subDistrict = subDistrict;
     }
@@ -226,7 +193,6 @@ public class OpsArrestLocale implements Serializable {
         return districtCode;
     }
     
-    @JsonProperty("DistrictCode")
     public void setDistrictCode(String districtCode) {
         this.districtCode = districtCode;
     }
@@ -235,7 +201,6 @@ public class OpsArrestLocale implements Serializable {
         return district;
     }
 
-    @JsonProperty("District")
     public void setDistrict(String district) {
         this.district = district;
     }
@@ -244,7 +209,6 @@ public class OpsArrestLocale implements Serializable {
         return provinceCode;
     }
     
-    @JsonProperty("ProvinceCode")
     public void setProvinceCode(String provinceCode) {
         this.provinceCode = provinceCode;
     }
@@ -253,7 +217,6 @@ public class OpsArrestLocale implements Serializable {
         return province;
     }
 
-    @JsonProperty("Province")
     public void setProvince(String province) {
         this.province = province;
     }
@@ -262,7 +225,6 @@ public class OpsArrestLocale implements Serializable {
         return zipCode;
     }
 
-    @JsonProperty("ZipCode")
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
@@ -271,7 +233,6 @@ public class OpsArrestLocale implements Serializable {
         return policestation;
     }
     
-    @JsonProperty("Policestation")
     public void setPolicestation(String policestation) {
         this.policestation = policestation;
     }
@@ -279,8 +240,7 @@ public class OpsArrestLocale implements Serializable {
     public short getIsActive() {
         return isActive;
     }
-    
-    @JsonProperty("IsActive")
+
     public void setIsActive(short isActive) {
         this.isActive = isActive;
     }
@@ -294,7 +254,8 @@ public class OpsArrestLocale implements Serializable {
         this.subDistrictCode = subDistrictCode;
     }
 
-    @JsonProperty("ArrestItems")
+    //@JsonProperty("ArrestItems")
+    @JsonIgnore
     public OpsArrest getArrestCode() {
         return arrestCode;
     }

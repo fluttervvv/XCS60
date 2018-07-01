@@ -21,16 +21,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
+
 
 /**
  *
  * @author Pratin
  */
 @Entity
-@Table(name = "mas_subdistrict", catalog = "", schema = "ILLEGAL60")
-@XmlRootElement
+@Table(name = "\"mas_subdistrict\"", catalog = "", schema = "ILLEGAL60")
 @NamedQueries({
     @NamedQuery(name = "MasSubdistrict.findAll", query = "SELECT m FROM MasSubdistrict m")
     , @NamedQuery(name = "MasSubdistrict.findBySubdistrictCode", query = "SELECT m FROM MasSubdistrict m WHERE m.subdistrictCode = :subdistrictCode")
