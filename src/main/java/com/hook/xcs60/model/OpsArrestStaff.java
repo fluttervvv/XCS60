@@ -11,13 +11,18 @@ import java.math.BigInteger;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  *
@@ -51,43 +56,73 @@ public class OpsArrestStaff implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @Basic(optional = false)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+//    @SequenceGenerator(name = "id_Sequence", sequenceName = "LOCATION_ID")
     @Column(name ="\"StaffID\"")
+    @JsonProperty("StaffID")
     private BigDecimal staffID;
+    
     @Column(name ="\"ProgramCode\"")
+    @JsonProperty("ProgramCode")
     private String programCode;
+    
     @Column(name ="\"ProcessCode\"")
+    @JsonProperty("ProcessCode")
     private String processCode;
+    
+    @Column(name ="\"ArrestCode\"")
+    @JsonProperty("ArrestCode")
+    private String arrestCode;
+    
+    @Column(name ="\"StaffCode\"")
+    @JsonProperty("StaffCode")
+    private String staffCode;
+    
     @Column(name ="\"TitleName\"")
+    @JsonProperty("TitleName")
     private String titleName;
     @Column(name ="\"FirstName\"")
+    @JsonProperty("FirstName")
     private String firstName;
     @Column(name ="\"LastName\"")
+    @JsonProperty("LastName")
     private String lastName;
     @Column(name ="\"PositionCode\"")
+    @JsonProperty("PositionCode")
     private String positionCode;
     @Column(name ="\"PositionName\"")
+    @JsonProperty("PositionName")
     private String positionName;
     @Column(name ="\"PosLevel\"")
+    @JsonProperty("PosLevel")
     private String posLevel;
     @Column(name ="\"PosLevelName\"")
+    @JsonProperty("PosLevelName")
     private String posLevelName;
     @Column(name ="\"DepartmentCode\"")
+    @JsonProperty("DepartmentCode")
     private String departmentCode;
     @Column(name ="\"DepartmentName\"")
+    @JsonProperty("DepartmentName")
     private String departmentName;
     @Column(name ="\"DepartmentLevel\"")
+    @JsonProperty("DepartmentLevel")
     private String departmentLevel;
     @Column(name ="\"OfficeCode\"")
+    @JsonProperty("OfficeCode")
     private String officeCode;
     @Column(name ="\"OfficeName\"")
+    @JsonProperty("OfficeName")
     private String officeName;
     @Column(name ="\"OfficeShortName\"")
+    @JsonProperty("OfficeShortName")
     private String officeShortName;
     @Column(name ="\"ContributorID\"")
+    @JsonProperty("ContributorID")
     private BigInteger contributorID;
     @Basic(optional = false)
     @Column(name ="\"IsActive\"")
+    @JsonProperty("IsActive")
     private short isActive;
 //    @JoinColumn(name ="\"StaffCode", referencedColumnName ="\"StaffCode\"")
 //    @ManyToOne
@@ -131,8 +166,24 @@ public class OpsArrestStaff implements Serializable {
     public void setProcessCode(String processCode) {
         this.processCode = processCode;
     }
+    
+    public String getArrestCode() {
+		return arrestCode;
+	}
 
-    public String getTitleName() {
+	public void setArrestCode(String arrestCode) {
+		this.arrestCode = arrestCode;
+	}
+
+	public String getStaffCode() {
+		return staffCode;
+	}
+
+	public void setStaffCode(String staffCode) {
+		this.staffCode = staffCode;
+	}
+
+	public String getTitleName() {
         return titleName;
     }
 

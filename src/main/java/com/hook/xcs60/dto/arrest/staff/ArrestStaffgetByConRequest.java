@@ -1,18 +1,20 @@
 package com.hook.xcs60.dto.arrest.staff;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ArrestStaffgetByConRequest {
 	
-	String staffId;
+	BigDecimal staffID;
 
-	public String getStaffId() {
-		return staffId;
+	public BigDecimal getStaffID() {
+		return staffID;
 	}
 
 	@JsonProperty("StaffID")
-	public void setStaffId(String staffId) {
-		this.staffId = staffId;
+	public void setStaffID(BigDecimal staffID) {
+		this.staffID = staffID;
 	}
 	
 }
