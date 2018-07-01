@@ -17,8 +17,10 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
@@ -41,13 +43,14 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
     , @NamedQuery(name = "OpsArrestProductDetail.findByMistreatRate", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.mistreatRate = :mistreatRate")
     , @NamedQuery(name = "OpsArrestProductDetail.findByFine", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.fine = :fine")
     , @NamedQuery(name = "OpsArrestProductDetail.findByIsActive", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.isActive = :isActive")})
+@SequenceGenerator(name = "ProductDetailID_Sequence", schema= "ILLEGAL60", sequenceName = "\"ops_arrest_product_detail_SEQ\"", initialValue = 1, allocationSize = 1)
 public class OpsArrestProductDetail implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @Column(name ="\"ProductDetailID\"")
-    @GeneratedValue(strategy=GenerationType.SEQUENCE ,generator = "id_Sequence")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE ,generator = "ProductDetailID_Sequence")
     private Long productDetailID;
     @Column(name ="\"IsProdcutCo\"")
     private String isProdcutCo;
@@ -71,9 +74,9 @@ public class OpsArrestProductDetail implements Serializable {
     @Basic(optional = false)
     @Column(name ="\"IsActive\"")
     private short isActive;
-//    @JoinColumn(name = "IndictmentDetailID", referencedColumnName = "IndictmentDetailID")
-//    @ManyToOne(optional = false)
-//    private OpsArrestIndicmentDetail indictmentDetailID;
+    @JoinColumn(name = "\"IndictmentDetailID\"", referencedColumnName = "\"IndictmentDetailID\"")
+    @ManyToOne(optional = false)
+    private OpsArrestIndicmentDetail indictmentDetailID;
     @JoinColumn(name = "\"ProductID\"", referencedColumnName = "\"ProductID\"")
     @ManyToOne(optional = false)
     private OpsArrestProduct productID;
@@ -83,6 +86,9 @@ public class OpsArrestProductDetail implements Serializable {
 
     public OpsArrestProductDetail(Long productDetailID) {
         this.productDetailID = productDetailID;
+    }
+    public OpsArrestProductDetail(String productDetailID) {
+        this.productDetailID = Long.valueOf(productDetailID);
     }
 
     public OpsArrestProductDetail(Long productDetailID, short isActive) {
@@ -178,18 +184,22 @@ public class OpsArrestProductDetail implements Serializable {
         this.isActive = isActive;
     }
 
-//    public OpsArrestIndicmentDetail getIndictmentDetailID() {
-//        return indictmentDetailID;
-//    }
-//
-//    public void setIndictmentDetailID(OpsArrestIndicmentDetail indictmentDetailID) {
-//        this.indictmentDetailID = indictmentDetailID;
-//    }
+    @JsonProperty("IndictmentDetail")
+    public OpsArrestIndicmentDetail getIndictmentDetailID() {
+        return indictmentDetailID;
+    }
 
+    @JsonProperty("IndictmentDetailID")
+    public void setIndictmentDetailID(OpsArrestIndicmentDetail indictmentDetailID) {
+        this.indictmentDetailID = indictmentDetailID;
+    }
+
+    @JsonProperty("Product")
     public OpsArrestProduct getProductID() {
         return productID;
     }
 
+    @JsonProperty("ProductID")
     public void setProductID(OpsArrestProduct productID) {
         this.productID = productID;
     }

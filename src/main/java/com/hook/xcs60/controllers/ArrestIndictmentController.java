@@ -44,15 +44,12 @@ public class ArrestIndictmentController {
 			return ResponseBuilder.Error(e.getMessage());
 		}
 	}
-	
-	
+
 	@RequestMapping("/ArrestIndicmentupdByCon")
 	public Object ArrestIndicmentupdByCon(@RequestBody OpsArrestIndictment arrestIndictment) {
 		try {
-			Optional<OpsArrestIndictment> oData = arrestIndictmentRepository
-					.findById(arrestIndictment.getIndictmentID());
-			if (oData.isPresent()) {
-				arrestIndictmentRepository.save(oData.get());
+			if (arrestIndictmentRepository.existsById(arrestIndictment.getIndictmentID())) {
+				arrestIndictmentRepository.save(arrestIndictment);
 				return ResponseBuilder.Success();
 			}
 
@@ -61,8 +58,7 @@ public class ArrestIndictmentController {
 			return ResponseBuilder.Error(e.getMessage());
 		}
 	}
-	
-	
+
 	@RequestMapping("/ArrestIndicmentupdDelete")
 	public Object ArrestIndicmentupdDelete(@RequestBody ArrestIndicmentgetByConRequest arrestIndicmentgetByConRequest) {
 		try {

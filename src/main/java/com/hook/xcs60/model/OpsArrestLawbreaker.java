@@ -43,12 +43,12 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @Entity
 @Table(name = "\"ops_arrest_lawbreaker\"", catalog = "", schema = "ILLEGAL60")
 @JsonNaming(PropertyNamingStrategy.UpperCamelCaseStrategy.class)
+@SequenceGenerator(name = "lawbreakerID_Sequence", schema = "ILLEGAL60",sequenceName = "\"ops_arrest_lawbreaker_SEQ\"", initialValue = 1, allocationSize = 1)
 public class OpsArrestLawbreaker implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-    //@SequenceGenerator(name = "id_Sequence", sequenceName = "LAWBREAKERID")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "lawbreakerID_Sequence")
     @Column(name ="\"LawbreakerID\"")
     private BigDecimal lawbreakerID;
     @Basic(optional = false)
@@ -219,6 +219,19 @@ public class OpsArrestLawbreaker implements Serializable {
     public OpsArrestLawbreaker(BigDecimal lawbreakerID) {
         this.lawbreakerID = lawbreakerID;
     }
+    
+    public OpsArrestLawbreaker(Long lawbreakerID) {
+        this.lawbreakerID = new BigDecimal(lawbreakerID);
+    }
+    
+    public OpsArrestLawbreaker(String lawbreakerID) {
+        this.lawbreakerID = new BigDecimal(lawbreakerID);
+    }
+    
+    
+    
+    
+    
 
     public OpsArrestLawbreaker(BigDecimal lawbreakerID, short entityType, short lawbreakerType, String lawbreakerFirstName, String lawbreakerLastName, String iDCard, Date birthDate, Character genderType, String nationalityCode, String raceCode, String maritalStatus, short isActive) {
         this.lawbreakerID = lawbreakerID;

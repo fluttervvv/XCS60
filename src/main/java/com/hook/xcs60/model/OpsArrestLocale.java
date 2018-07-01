@@ -29,12 +29,12 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @Entity
 @Table(name = "\"ops_arrest_locale\"", catalog = "", schema = "ILLEGAL60")
 @JsonNaming(PropertyNamingStrategy.UpperCamelCaseStrategy.class)
+@SequenceGenerator(name = "localeID_Sequence", schema = "ILLEGAL60", sequenceName = "\"ops_arrest_locale_SEQ\"", initialValue = 1, allocationSize = 1)
 public class OpsArrestLocale implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-    @SequenceGenerator(name = "id_Sequence", sequenceName = "LOCATION_ID")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "localeID_Sequence")
     @Column(name ="\"LocaleID\"")
     private Long localeID;
     @Column(name ="\"IsArrest\"")

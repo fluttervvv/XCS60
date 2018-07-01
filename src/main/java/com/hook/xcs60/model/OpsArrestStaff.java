@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Pratin
  */
 @Entity
-@Table(name = "ops_arrest_staff", catalog = "", schema = "ILLEGAL60")
+@Table(name = "\"ops_arrest_staf\"", catalog = "", schema = "ILLEGAL60")
 @NamedQueries({
     @NamedQuery(name = "OpsArrestStaff.findAll", query = "SELECT o FROM OpsArrestStaff o")
     , @NamedQuery(name = "OpsArrestStaff.findByStaffID", query = "SELECT o FROM OpsArrestStaff o WHERE o.staffID = :staffID")
@@ -50,13 +50,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
     , @NamedQuery(name = "OpsArrestStaff.findByOfficeShortName", query = "SELECT o FROM OpsArrestStaff o WHERE o.officeShortName = :officeShortName")
     , @NamedQuery(name = "OpsArrestStaff.findByContributorID", query = "SELECT o FROM OpsArrestStaff o WHERE o.contributorID = :contributorID")
     , @NamedQuery(name = "OpsArrestStaff.findByIsActive", query = "SELECT o FROM OpsArrestStaff o WHERE o.isActive = :isActive")})
+@SequenceGenerator(name = "staffID_Sequence", sequenceName = "\"ops_arrest_staff_SEQ\"",initialValue = 1, allocationSize = 1)
 public class OpsArrestStaff implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-//    @SequenceGenerator(name = "id_Sequence", sequenceName = "LOCATION_ID")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "staffID_Sequence")
     @Column(name ="\"StaffID\"")
     @JsonProperty("StaffID")
     private BigDecimal staffID;

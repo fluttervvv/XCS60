@@ -146,6 +146,9 @@ public class OpsArrestProduct implements Serializable {
 	public OpsArrestProduct(Long productID) {
 		this.productID = productID;
 	}
+	public OpsArrestProduct(String productID) {
+		this.productID = Long.valueOf(productID);
+	}
 
 	public OpsArrestProduct(Long productID, short productType, String groupCode, short isActive) {
 		this.productID = productID;

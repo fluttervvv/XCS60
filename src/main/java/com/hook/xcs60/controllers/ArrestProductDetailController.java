@@ -24,10 +24,12 @@ public class ArrestProductDetailController {
 	public Object ArrestProductDetailgetByCon(
 			@RequestBody ArrestProductDetailgetByConRequest arrestProductDetailgetByConRequest) {
 		try {
-			List<Long> ids = new ArrayList<Long>();
-			ids.add(arrestProductDetailgetByConRequest.getProductDetailId());
-			return ResponseBuilder
-					.Success((List<OpsArrestProductDetail>) arrestProductDetailRepository.findAllById(ids));
+			Optional<OpsArrestProductDetail> oData = arrestProductDetailRepository
+					.findById(arrestProductDetailgetByConRequest.getProductDetailId());
+			if (oData.isPresent()) {
+				return ResponseBuilder.Success(oData);
+			}
+			return ResponseBuilder.Error("Not Found Data");
 		} catch (Exception e) {
 			return ResponseBuilder.Error(e.getMessage());
 		}
@@ -37,7 +39,7 @@ public class ArrestProductDetailController {
 	@RequestMapping("/ArrestProductDetailinsAll")
 	public Object ArrestProductDetailinsAll(@RequestBody OpsArrestProductDetail arrestProductDetail) {
 		try {
-		
+			arrestProductDetail.setProductDetailID(null);
 			arrestProductDetail.setIsActive((short) 1);
 			arrestProductDetailRepository.save(arrestProductDetail);
 			return ResponseBuilder.Success();
