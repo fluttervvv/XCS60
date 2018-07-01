@@ -18,13 +18,13 @@ public class ArrestLawbreakerController {
 	@Autowired
 	ArrestLawbreakerRepository arrestLawbreakerRepository;
 	
-	@RequestMapping("/ArrestLawbreakergetByCon")
-	public Object ArrestLawbreakergetByCon(@RequestBody ArrestLawbreakergetByConRequest request) {
-		try {
-		 return ResponseBuilder.Success((List<ArrestLawbreaker>) arrestLawbreakerRepository.findAll());
-		}catch (Exception e) {
-			return ResponseBuilder.Error(e.getMessage());
-		}
-
-	}
+//	@RequestMapping("/ArrestLawbreakergetByCon")
+//	public Object ArrestLawbreakergetByCon(@RequestBody ArrestLawbreakergetByConRequest request) {
+//		try {
+//		 return ResponseBuilder.Success((List<ArrestLawbreaker>) arrestLawbreakerRepository.findAll());
+//		}catch (Exception e) {
+//			return ResponseBuilder.Error(e.getMessage());
+//		}
+//
+//	}
 }
