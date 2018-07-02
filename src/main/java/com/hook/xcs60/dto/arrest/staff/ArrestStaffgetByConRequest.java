@@ -6,15 +6,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ArrestStaffgetByConRequest {
 	
-	int staffID;
+	BigDecimal staffID;
 
-	public Integer getStaffID() {
+	public BigDecimal getStaffID() {
 		return staffID;
 	}
 
 	@JsonProperty("StaffID")
-	public void setStaffID(Integer staffID) {
+	public void setStaffID(BigDecimal staffID) {
 		this.staffID = staffID;
 	}
 	
+	@JsonProperty("StaffID")
+	public void setStaffID(String staffID) {
+		this.staffID = new BigDecimal(staffID);
+	}
 }
