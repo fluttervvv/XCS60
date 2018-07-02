@@ -16,7 +16,7 @@ public class ArrestStaffgetByConRequest {
 	public void setStaffID(BigDecimal staffID) {
 		this.staffID = staffID;
 	}
-	
+
 	@JsonProperty("StaffID")
 	public void setStaffID(String staffID) {
 		this.staffID = new BigDecimal(staffID);
