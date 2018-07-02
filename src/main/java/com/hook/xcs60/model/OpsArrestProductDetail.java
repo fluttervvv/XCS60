@@ -79,7 +79,7 @@ public class OpsArrestProductDetail implements Serializable {
 	// @ManyToOne(optional = false)
 	// private OpsArrestIndicmentDetail indictmentDetailID;
 
-	@Column(name = "IndictmentDetailID")
+	@Column(name = "\"IndictmentDetailID\"")
 	private Long indictmentDetailID;
 
 	//
@@ -87,7 +87,7 @@ public class OpsArrestProductDetail implements Serializable {
 	// @ManyToOne(optional = false)
 	// private OpsArrestProduct productID;
 
-	@Column(name = "ProductID")
+	@Column(name = "\"ProductID\"")
 	private Long productID;
 
 	public OpsArrestProductDetail() {
