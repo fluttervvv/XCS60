@@ -13,10 +13,11 @@ import com.hook.xcs60.model.OpsArrest;
 public interface ArrestRepository extends CrudRepository<OpsArrest, String> {
 
 	@Query("select t from OpsArrest t join OpsArrestStaff s on t.arrestCode = s.arrestCode "
-			+ " where t.arrestCode like %:keyword% or " + " t.arrestStation like %:keyword% or "
+			+ " where t.isActive = 1 "
+			+ " and ( t.arrestCode like %:keyword% or " + " t.arrestStation like %:keyword% or "
 			+ " s.titleName like %:keyword% or " + " s.firstName like %:keyword% or "
 			+ " s.lastName like %:keyword% or " + " s.positionName like %:keyword% or "
-			+ " s.posLevel like %:keyword% or " + " s.departmentName like %:keyword% ")
+			+ " s.posLevel like %:keyword% or " + " s.departmentName like %:keyword% )")
 	List<OpsArrest> findByKeyword(@Param("keyword") String keyword);
 
 	@Query("select t from OpsArrest t join OpsArrestStaff s on " + " t.arrestCode = s.arrestCode "
