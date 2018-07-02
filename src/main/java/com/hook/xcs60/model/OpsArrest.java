@@ -23,6 +23,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
@@ -79,7 +80,12 @@ public class OpsArrest implements Serializable {
     @Column(name ="\"IsActive\"")
     private short isActive;
     
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "arrestCode")
+    @Column(name = "\"NoticeCode\"")
+    private String noticeCode;
+    
+ 
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "arrestCode")
     private Collection<OpsArrestIndictment> opsArrestIndictmentCollection;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "arrestCode")
@@ -114,6 +120,15 @@ public class OpsArrest implements Serializable {
         this.isActive = isActive;
     }
 
+    public String getNoticeCode() {
+ 		return noticeCode;
+ 	}
+
+ 	public void setNoticeCode(String noticeCode) {
+ 		this.noticeCode = noticeCode;
+ 	}
+    
+    
     public String getArrestCode() {
         return arrestCode;
     }
@@ -240,6 +255,7 @@ public class OpsArrest implements Serializable {
         return opsArrestIndictmentCollection;
     }
 
+    @JsonProperty("ArrestIndictment")
     public void setOpsArrestIndictmentCollection(Collection<OpsArrestIndictment> opsArrestIndictmentCollection) {
         this.opsArrestIndictmentCollection = opsArrestIndictmentCollection;
     }
@@ -249,6 +265,7 @@ public class OpsArrest implements Serializable {
         return opsArrestLocaleCollection;
     }
 
+    @JsonProperty("ArrestLocale")
     public void setOpsArrestLocaleCollection(Collection<OpsArrestLocale> opsArrestLocaleCollection) {
         this.opsArrestLocaleCollection = opsArrestLocaleCollection;
     }
@@ -258,6 +275,7 @@ public class OpsArrest implements Serializable {
         return opsArrestProductCollection;
     }
 
+    @JsonProperty("ArrestProduct")
     public void setOpsArrestProductCollection(Collection<OpsArrestProduct> opsArrestProductCollection) {
         this.opsArrestProductCollection = opsArrestProductCollection;
     }
@@ -266,6 +284,7 @@ public class OpsArrest implements Serializable {
         return opsArrestLawbreakerCollection;
     }
 
+    @JsonProperty("ArrestLawbreaker")
     public void setOpsArrestLawbreakerCollection(Collection<OpsArrestLawbreaker> opsArrestLawbreakerCollection) {
         this.opsArrestLawbreakerCollection = opsArrestLawbreakerCollection;
     }
@@ -274,6 +293,7 @@ public class OpsArrest implements Serializable {
         return opsArrestStaffCollection;
     }
 
+    @JsonProperty("ArrestStaff")
     public void setOpsArrestStaffCollection(Collection<OpsArrestStaff> opsArrestStaffCollection) {
         this.opsArrestStaffCollection = opsArrestStaffCollection;
     }
