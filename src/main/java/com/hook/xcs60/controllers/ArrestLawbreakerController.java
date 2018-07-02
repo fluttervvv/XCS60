@@ -37,7 +37,8 @@ public class ArrestLawbreakerController {
 			if(lawbreaker.isPresent()) 
 			{
 				OpsArrestLawbreaker oLawbreaker = lawbreaker.get();
-				List<OpsArrestLawbreakerAddress> addressList = arrestLawbreakerAddressRepository.findByLawbreakerID(oLawbreaker.getLawbreakerID());
+				System.out.print("golfxx:" + oLawbreaker.getLawbreakerRefID());
+				List<OpsArrestLawbreakerAddress> addressList = arrestLawbreakerAddressRepository.findByLawbreakerID(new BigDecimal(oLawbreaker.getLawbreakerRefID()));
 				if(addressList != null && addressList.size() > 0)
 				{
 					oLawbreaker.setArrestLawBreakerAddressList(addressList);
@@ -63,6 +64,7 @@ public class ArrestLawbreakerController {
 					 //addressList.get(i).setLawbreakerID(arrestLawbreaker.getLawbreakerID());
 					 //System.out.println("child: " + arrestLawbreaker.getLawbreakerID());
 //					 System.out.println("child: " + addressList.get(i).getLawbreakerID());
+					 addressList.get(i).setIsActive((short)1);
 					 arrestLawbreakerAddressRepository.save(addressList.get(i));
 				 }
 			 }
@@ -95,10 +97,11 @@ public class ArrestLawbreakerController {
 						
 						for(int i = 0; i < addressList.size(); i++)
 						{
-							Optional<OpsArrestLawbreakerAddress> oAddress = arrestLawbreakerAddressRepository.findByLawbreakerAddressID((short)1);
+							Optional<OpsArrestLawbreakerAddress> oAddress = arrestLawbreakerAddressRepository.findByLawbreakerAddressID(addressList.get(i).getLawbreakerAddressID());
 
 							if(oAddress.isPresent())
 							{
+								addressList.get(0).setIsActive(oAddress.get().getIsActive());
 								arrestLawbreakerAddressRepository.save(addressList.get(0));
 							}
 						}
@@ -129,6 +132,19 @@ public class ArrestLawbreakerController {
 					OpsArrestLawbreaker oLawbreaker = lawbreaker.get();
 					oLawbreaker.setIsActive((short) 0);
 					arrestLawbreakerRepository.save(oLawbreaker);
+					
+					List<OpsArrestLawbreakerAddress> addressList = arrestLawbreakerAddressRepository.findByLawbreakerID(new BigDecimal(oLawbreaker.getLawbreakerRefID()));
+					
+					if(addressList != null && addressList.size() > 0)
+					{
+						for (int i = 0; i < addressList.size(); i++)
+						{
+							addressList.get(i).setIsActive((short) 0);
+							arrestLawbreakerAddressRepository.save(addressList.get(i));
+						}
+					}
+	
+					
 					return ResponseBuilder.Success();
 				}
 			}
