@@ -47,7 +47,7 @@ public class ArrestController {
 	 @RequestMapping("/ArrestgetByKeyword")
 	 public Object ArrestgetByKeyword(@RequestBody KeywordRequest keywordRequest) {
 		 try {
-			 return ResponseBuilder.Success((List<OpsArrest>) arrestRepository.findAll());
+			 return ResponseBuilder.Success((List<OpsArrest>) arrestRepository.findByKeyword(keywordRequest.getTextsearch()));
 		 }catch(Exception e) {
 			 return ResponseBuilder.Error(e.getMessage());
 		 }
