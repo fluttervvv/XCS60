@@ -63,7 +63,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 		@NamedQuery(name = "OpsArrestProduct.findByNetVolumeUnit", query = "SELECT o FROM OpsArrestProduct o WHERE o.netVolumeUnit = :netVolumeUnit"),
 		@NamedQuery(name = "OpsArrestProduct.findByIsActive", query = "SELECT o FROM OpsArrestProduct o WHERE o.isActive = :isActive") })
 
-@SequenceGenerator(name = "productID_Sequence", schema= "ILLEGAL60", sequenceName = "\"ops_arrest_product_SEQ\"", initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "productID_Sequence", schema = "ILLEGAL60", sequenceName = "\"ops_arrest_product_SEQ\"", initialValue = 1, allocationSize = 1)
 public class OpsArrestProduct implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -134,18 +134,22 @@ public class OpsArrestProduct implements Serializable {
 	@Column(name = "\"IsActive\"")
 	private short isActive;
 
-	// @JoinColumn(name = "ArrestCode", referencedColumnName = "ArrestCode")
-	// @ManyToOne
-	// private OpsArrest arrestCode;
+//	@JoinColumn(name = "\"ArrestCode\"", referencedColumnName = "\"ArrestCode\"")
+//	@ManyToOne
+//	private OpsArrest arrestCode;
 	// @OneToMany(cascade = CascadeType.ALL, mappedBy = "productID")
 	// private Collection<OpsArrestProductDetail> opsArrestProductDetailCollection;
-
+	
+	@Column(name = "\"ArrestCode\"")
+	private String arrestCode ;
+	
 	public OpsArrestProduct() {
 	}
 
 	public OpsArrestProduct(Long productID) {
 		this.productID = productID;
 	}
+
 	public OpsArrestProduct(String productID) {
 		this.productID = Long.valueOf(productID);
 	}
@@ -389,13 +393,23 @@ public class OpsArrestProduct implements Serializable {
 		this.isActive = isActive;
 	}
 
-	// public OpsArrest getArrestCode() {
-	// return arrestCode;
-	// }
-	//
-	// public void setArrestCode(OpsArrest arrestCode) {
-	// this.arrestCode = arrestCode;
-	// }
+//	public OpsArrest getArrestCode() {
+//		return arrestCode;
+//	}
+//
+//	public void setArrestCode(OpsArrest arrestCode) {
+//		this.arrestCode = arrestCode;
+//	}
+	
+	
+	public String getArrestCode() {
+		return arrestCode;
+	}
+
+	public void String(String arrestCode) {
+		this.arrestCode = arrestCode;
+	}
+	
 	//
 	// public Collection<OpsArrestProductDetail>
 	// getOpsArrestProductDetailCollection() {

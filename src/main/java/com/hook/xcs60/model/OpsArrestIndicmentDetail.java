@@ -55,12 +55,22 @@ public class OpsArrestIndicmentDetail implements Serializable {
 	private Short lawsuitType;
 	@Column(name = "\"IsActive\"")
 	private Short isActive;
-	@JoinColumn(name = "\"IndictmentID\"", referencedColumnName = "\"IndictmentID\"")
-	@ManyToOne(optional = false)
-	private OpsArrestIndictment indictmentID;
-	@JoinColumn(name = "\"LawbreakerID\"", referencedColumnName = "\"LawbreakerID\"")
-	@ManyToOne(optional = false)
-	private OpsArrestLawbreaker lawbreakerID;
+
+	// @JoinColumn(name = "\"IndictmentID\"", referencedColumnName =
+	// "\"IndictmentID\"")
+	// @ManyToOne(optional = false)
+	// private OpsArrestIndictment indictmentID;
+
+	@Column(name = "\"IndictmentID\"")
+	private Long indictmentID;
+
+	// @JoinColumn(name = "\"LawbreakerID\"", referencedColumnName =
+	// "\"LawbreakerID\"")
+	// @ManyToOne(optional = false)
+	// private OpsArrestLawbreaker lawbreakerID;
+
+	@Column(name = "\"LawbreakerID\"")
+	private Long lawbreakerID;
 
 	// @OneToMany(mappedBy = "indictmentDetailID")
 	// private Collection<OpsLawsuitJudgement> opsLawsuitJudgementCollection;
@@ -75,7 +85,7 @@ public class OpsArrestIndicmentDetail implements Serializable {
 	public OpsArrestIndicmentDetail(Long indictmentDetailID) {
 		this.indictmentDetailID = indictmentDetailID;
 	}
-	
+
 	public OpsArrestIndicmentDetail(String indictmentDetailID) {
 		this.indictmentDetailID = Long.valueOf(indictmentDetailID);
 	}
@@ -104,23 +114,40 @@ public class OpsArrestIndicmentDetail implements Serializable {
 		this.isActive = isActive;
 	}
 
-	public OpsArrestIndictment getIndictmentID() {
+	// public OpsArrestIndictment getIndictmentID() {
+	// return indictmentID;
+	// }
+	//
+	// public void setIndictmentID(OpsArrestIndictment indictmentID) {
+	// this.indictmentID = indictmentID;
+	// }
+
+	public Long getIndictmentID() {
 		return indictmentID;
 	}
 
-	public void setIndictmentID(OpsArrestIndictment indictmentID) {
+	public void setIndictmentID(Long indictmentID) {
 		this.indictmentID = indictmentID;
 	}
 
-	@JsonProperty("Lawbreaker")
-	public OpsArrestLawbreaker getLawbreakerID() {
+	// @JsonProperty("Lawbreaker")
+	// public OpsArrestLawbreaker getLawbreakerID() {
+	// return lawbreakerID;
+	// }
+	//
+	// @JsonProperty("LawbreakerID")
+	// public void setLawbreakerID(OpsArrestLawbreaker lawbreakerID) {
+	// this.lawbreakerID = lawbreakerID;
+	// }
+
+	public Long getLawbreakerID() {
 		return lawbreakerID;
 	}
 
-	@JsonProperty("LawbreakerID")
-	public void setLawbreakerID(OpsArrestLawbreaker lawbreakerID) {
+	public void setLawbreakerID(Long lawbreakerID) {
 		this.lawbreakerID = lawbreakerID;
 	}
+
 	//
 	// @XmlTransient
 	// public Collection<OpsLawsuitJudgement> getOpsLawsuitJudgementCollection() {

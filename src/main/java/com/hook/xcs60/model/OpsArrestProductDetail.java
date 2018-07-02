@@ -31,202 +31,234 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 @Entity
 @Table(name = "\"ops_arrest_product_detail\"", catalog = "", schema = "ILLEGAL60")
 @JsonNaming(PropertyNamingStrategy.UpperCamelCaseStrategy.class)
-@NamedQueries({
-    @NamedQuery(name = "OpsArrestProductDetail.findAll", query = "SELECT o FROM OpsArrestProductDetail o")
-    , @NamedQuery(name = "OpsArrestProductDetail.findByProductDetailID", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.productDetailID = :productDetailID")
-    , @NamedQuery(name = "OpsArrestProductDetail.findByQty", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.qty = :qty")
-    , @NamedQuery(name = "OpsArrestProductDetail.findByQtyUnit", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.qtyUnit = :qtyUnit")
-    , @NamedQuery(name = "OpsArrestProductDetail.findBySize", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.size = :size")
-    , @NamedQuery(name = "OpsArrestProductDetail.findBySizeUnit", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.sizeUnit = :sizeUnit")
-    , @NamedQuery(name = "OpsArrestProductDetail.findByVolume", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.volume = :volume")
-    , @NamedQuery(name = "OpsArrestProductDetail.findByVolumeUnit", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.volumeUnit = :volumeUnit")
-    , @NamedQuery(name = "OpsArrestProductDetail.findByMistreatRate", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.mistreatRate = :mistreatRate")
-    , @NamedQuery(name = "OpsArrestProductDetail.findByFine", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.fine = :fine")
-    , @NamedQuery(name = "OpsArrestProductDetail.findByIsActive", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.isActive = :isActive")})
-@SequenceGenerator(name = "ProductDetailID_Sequence", schema= "ILLEGAL60", sequenceName = "\"ops_arrest_product_detail_SEQ\"", initialValue = 1, allocationSize = 1)
+@NamedQueries({ @NamedQuery(name = "OpsArrestProductDetail.findAll", query = "SELECT o FROM OpsArrestProductDetail o"),
+		@NamedQuery(name = "OpsArrestProductDetail.findByProductDetailID", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.productDetailID = :productDetailID"),
+		@NamedQuery(name = "OpsArrestProductDetail.findByQty", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.qty = :qty"),
+		@NamedQuery(name = "OpsArrestProductDetail.findByQtyUnit", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.qtyUnit = :qtyUnit"),
+		@NamedQuery(name = "OpsArrestProductDetail.findBySize", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.size = :size"),
+		@NamedQuery(name = "OpsArrestProductDetail.findBySizeUnit", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.sizeUnit = :sizeUnit"),
+		@NamedQuery(name = "OpsArrestProductDetail.findByVolume", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.volume = :volume"),
+		@NamedQuery(name = "OpsArrestProductDetail.findByVolumeUnit", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.volumeUnit = :volumeUnit"),
+		@NamedQuery(name = "OpsArrestProductDetail.findByMistreatRate", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.mistreatRate = :mistreatRate"),
+		@NamedQuery(name = "OpsArrestProductDetail.findByFine", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.fine = :fine"),
+		@NamedQuery(name = "OpsArrestProductDetail.findByIsActive", query = "SELECT o FROM OpsArrestProductDetail o WHERE o.isActive = :isActive") })
+@SequenceGenerator(name = "ProductDetailID_Sequence", schema = "ILLEGAL60", sequenceName = "\"ops_arrest_product_detail_SEQ\"", initialValue = 1, allocationSize = 1)
 public class OpsArrestProductDetail implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @Column(name ="\"ProductDetailID\"")
-    @GeneratedValue(strategy=GenerationType.SEQUENCE ,generator = "ProductDetailID_Sequence")
-    private Long productDetailID;
-    @Column(name ="\"IsProdcutCo\"")
-    private String isProdcutCo;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @Column(name ="\"Qty\"")
-    private Double qty;
-    @Column(name ="\"QtyUnit\"")
-    private Double qtyUnit;
-    @Column(name ="\"Size\"")
-    private Double size;
-    @Column(name ="\"SizeUnit\"")
-    private Double sizeUnit;
-    @Column(name ="\"Volume\"")
-    private Double volume;
-    @Column(name ="\"VolumeUnit\"")
-    private Double volumeUnit;
-    @Column(name ="\"MistreatRate\"")
-    private String mistreatRate;
-    @Column(name ="\"Fine\"")
-    private String fine;
-    @Basic(optional = false)
-    @Column(name ="\"IsActive\"")
-    private short isActive;
-    @JoinColumn(name = "\"IndictmentDetailID\"", referencedColumnName = "\"IndictmentDetailID\"")
-    @ManyToOne(optional = false)
-    private OpsArrestIndicmentDetail indictmentDetailID;
-    @JoinColumn(name = "\"ProductID\"", referencedColumnName = "\"ProductID\"")
-    @ManyToOne(optional = false)
-    private OpsArrestProduct productID;
+	private static final long serialVersionUID = 1L;
+	@Id
+	@Basic(optional = false)
+	@Column(name = "\"ProductDetailID\"")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProductDetailID_Sequence")
+	private Long productDetailID;
+	@Column(name = "\"IsProdcutCo\"")
+	private String isProdcutCo;
+	// @Max(value=?) @Min(value=?)//if you know range of your decimal fields
+	// consider using these annotations to enforce field validation
+	@Column(name = "\"Qty\"")
+	private Double qty;
+	@Column(name = "\"QtyUnit\"")
+	private Double qtyUnit;
+	@Column(name = "\"Size\"")
+	private Double size;
+	@Column(name = "\"SizeUnit\"")
+	private Double sizeUnit;
+	@Column(name = "\"Volume\"")
+	private Double volume;
+	@Column(name = "\"VolumeUnit\"")
+	private Double volumeUnit;
+	@Column(name = "\"MistreatRate\"")
+	private String mistreatRate;
+	@Column(name = "\"Fine\"")
+	private String fine;
+	@Basic(optional = false)
+	@Column(name = "\"IsActive\"")
+	private short isActive;
+	// @JoinColumn(name = "\"IndictmentDetailID\"", referencedColumnName =
+	// "\"IndictmentDetailID\"")
+	// @ManyToOne(optional = false)
+	// private OpsArrestIndicmentDetail indictmentDetailID;
 
-    public OpsArrestProductDetail() {
-    }
+	@Column(name = "IndictmentDetailID")
+	private Long indictmentDetailID;
 
-    public OpsArrestProductDetail(Long productDetailID) {
-        this.productDetailID = productDetailID;
-    }
-    public OpsArrestProductDetail(String productDetailID) {
-        this.productDetailID = Long.valueOf(productDetailID);
-    }
+	//
+	// @JoinColumn(name = "\"ProductID\"", referencedColumnName = "\"ProductID\"")
+	// @ManyToOne(optional = false)
+	// private OpsArrestProduct productID;
 
-    public OpsArrestProductDetail(Long productDetailID, short isActive) {
-        this.productDetailID = productDetailID;
-        this.isActive = isActive;
-    }
+	@Column(name = "ProductID")
+	private Long productID;
 
-    public Long getProductDetailID() {
-        return productDetailID;
-    }
+	public OpsArrestProductDetail() {
+	}
 
-    public void setProductDetailID(Long productDetailID) {
-        this.productDetailID = productDetailID;
-    }
+	public OpsArrestProductDetail(Long productDetailID) {
+		this.productDetailID = productDetailID;
+	}
 
-    public String getIsProdcutCo() {
-        return isProdcutCo;
-    }
+	public OpsArrestProductDetail(String productDetailID) {
+		this.productDetailID = Long.valueOf(productDetailID);
+	}
 
-    public void setIsProdcutCo(String isProdcutCo) {
-        this.isProdcutCo = isProdcutCo;
-    }
+	public OpsArrestProductDetail(Long productDetailID, short isActive) {
+		this.productDetailID = productDetailID;
+		this.isActive = isActive;
+	}
 
-    public Double getQty() {
-        return qty;
-    }
+	public Long getProductDetailID() {
+		return productDetailID;
+	}
 
-    public void setQty(Double qty) {
-        this.qty = qty;
-    }
+	public void setProductDetailID(Long productDetailID) {
+		this.productDetailID = productDetailID;
+	}
 
-    public Double getQtyUnit() {
-        return qtyUnit;
-    }
+	public String getIsProdcutCo() {
+		return isProdcutCo;
+	}
 
-    public void setQtyUnit(Double qtyUnit) {
-        this.qtyUnit = qtyUnit;
-    }
+	public void setIsProdcutCo(String isProdcutCo) {
+		this.isProdcutCo = isProdcutCo;
+	}
 
-    public Double getSize() {
-        return size;
-    }
+	public Double getQty() {
+		return qty;
+	}
 
-    public void setSize(Double size) {
-        this.size = size;
-    }
+	public void setQty(Double qty) {
+		this.qty = qty;
+	}
 
-    public Double getSizeUnit() {
-        return sizeUnit;
-    }
+	public Double getQtyUnit() {
+		return qtyUnit;
+	}
 
-    public void setSizeUnit(Double sizeUnit) {
-        this.sizeUnit = sizeUnit;
-    }
+	public void setQtyUnit(Double qtyUnit) {
+		this.qtyUnit = qtyUnit;
+	}
 
-    public Double getVolume() {
-        return volume;
-    }
+	public Double getSize() {
+		return size;
+	}
 
-    public void setVolume(Double volume) {
-        this.volume = volume;
-    }
+	public void setSize(Double size) {
+		this.size = size;
+	}
 
-    public Double getVolumeUnit() {
-        return volumeUnit;
-    }
+	public Double getSizeUnit() {
+		return sizeUnit;
+	}
 
-    public void setVolumeUnit(Double volumeUnit) {
-        this.volumeUnit = volumeUnit;
-    }
+	public void setSizeUnit(Double sizeUnit) {
+		this.sizeUnit = sizeUnit;
+	}
 
-    public String getMistreatRate() {
-        return mistreatRate;
-    }
+	public Double getVolume() {
+		return volume;
+	}
 
-    public void setMistreatRate(String mistreatRate) {
-        this.mistreatRate = mistreatRate;
-    }
+	public void setVolume(Double volume) {
+		this.volume = volume;
+	}
 
-    public String getFine() {
-        return fine;
-    }
+	public Double getVolumeUnit() {
+		return volumeUnit;
+	}
 
-    public void setFine(String fine) {
-        this.fine = fine;
-    }
+	public void setVolumeUnit(Double volumeUnit) {
+		this.volumeUnit = volumeUnit;
+	}
 
-    public short getIsActive() {
-        return isActive;
-    }
+	public String getMistreatRate() {
+		return mistreatRate;
+	}
 
-    public void setIsActive(short isActive) {
-        this.isActive = isActive;
-    }
+	public void setMistreatRate(String mistreatRate) {
+		this.mistreatRate = mistreatRate;
+	}
 
-    @JsonProperty("IndictmentDetail")
-    public OpsArrestIndicmentDetail getIndictmentDetailID() {
-        return indictmentDetailID;
-    }
+	public String getFine() {
+		return fine;
+	}
 
-    @JsonProperty("IndictmentDetailID")
-    public void setIndictmentDetailID(OpsArrestIndicmentDetail indictmentDetailID) {
-        this.indictmentDetailID = indictmentDetailID;
-    }
+	public void setFine(String fine) {
+		this.fine = fine;
+	}
 
-    @JsonProperty("Product")
-    public OpsArrestProduct getProductID() {
-        return productID;
-    }
+	public short getIsActive() {
+		return isActive;
+	}
 
-    @JsonProperty("ProductID")
-    public void setProductID(OpsArrestProduct productID) {
-        this.productID = productID;
-    }
+	public void setIsActive(short isActive) {
+		this.isActive = isActive;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (productDetailID != null ? productDetailID.hashCode() : 0);
-        return hash;
-    }
+	// @JsonProperty("IndictmentDetail")
+	// public OpsArrestIndicmentDetail getIndictmentDetailID() {
+	// return indictmentDetailID;
+	// }
+	//
+	// @JsonProperty("IndictmentDetailID")
+	// public void setIndictmentDetailID(OpsArrestIndicmentDetail
+	// indictmentDetailID) {
+	// this.indictmentDetailID = indictmentDetailID;
+	// }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof OpsArrestProductDetail)) {
-            return false;
-        }
-        OpsArrestProductDetail other = (OpsArrestProductDetail) object;
-        if ((this.productDetailID == null && other.productDetailID != null) || (this.productDetailID != null && !this.productDetailID.equals(other.productDetailID))) {
-            return false;
-        }
-        return true;
-    }
+	@JsonProperty("IndictmentDetail")
+	public Long getIndictmentDetailID() {
+		return indictmentDetailID;
+	}
 
-    @Override
-    public String toString() {
-        return "com.hook.xcs60.model.OpsArrestProductDetail[ productDetailID=" + productDetailID + " ]";
-    }
-    
+	@JsonProperty("IndictmentDetailID")
+	public void setIndictmentDetailID(Long indictmentDetailID) {
+		this.indictmentDetailID = indictmentDetailID;
+	}
+
+	// @JsonProperty("Product")
+	// public OpsArrestProduct getProductID() {
+	// return productID;
+	// }
+	//
+	// @JsonProperty("ProductID")
+	// public void setProductID(OpsArrestProduct productID) {
+	// this.productID = productID;
+	// }
+
+	@JsonProperty("Product")
+	public Long getProductID() {
+		return productID;
+	}
+
+	@JsonProperty("ProductID")
+	public void setProductID(Long productID) {
+		this.productID = productID;
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 0;
+		hash += (productDetailID != null ? productDetailID.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		// TODO: Warning - this method won't work in the case the id fields are not set
+		if (!(object instanceof OpsArrestProductDetail)) {
+			return false;
+		}
+		OpsArrestProductDetail other = (OpsArrestProductDetail) object;
+		if ((this.productDetailID == null && other.productDetailID != null)
+				|| (this.productDetailID != null && !this.productDetailID.equals(other.productDetailID))) {
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "com.hook.xcs60.model.OpsArrestProductDetail[ productDetailID=" + productDetailID + " ]";
+	}
+
 }

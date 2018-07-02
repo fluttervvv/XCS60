@@ -22,7 +22,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
@@ -78,6 +78,23 @@ public class OpsArrest implements Serializable {
     @Basic(optional = false)
     @Column(name ="\"IsActive\"")
     private short isActive;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "arrestCode")
+    private Collection<OpsArrestIndictment> opsArrestIndictmentCollection;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "arrestCode")
+    private Collection<OpsArrestLocale> opsArrestLocaleCollection;
+    
+    @OneToMany(mappedBy = "arrestCode")
+    private Collection<OpsArrestProduct> opsArrestProductCollection;
+    
+    @OneToMany(mappedBy = "arrestCode")
+    private Collection<OpsArrestLawbreaker> opsArrestLawbreakerCollection;
+    
+
+    @OneToMany(mappedBy = "arrestCode")
+    private Collection<OpsArrestStaff> opsArrestStaffCollection;
+    
 
     public OpsArrest() {
     }
@@ -216,7 +233,50 @@ public class OpsArrest implements Serializable {
     public void setIsActive(short isActive) {
         this.isActive = isActive;
     }
+    
+  
+    
+    public Collection<OpsArrestIndictment> getOpsArrestIndictmentCollection() {
+        return opsArrestIndictmentCollection;
+    }
 
+    public void setOpsArrestIndictmentCollection(Collection<OpsArrestIndictment> opsArrestIndictmentCollection) {
+        this.opsArrestIndictmentCollection = opsArrestIndictmentCollection;
+    }
+    
+    
+    public Collection<OpsArrestLocale> getOpsArrestLocaleCollection() {
+        return opsArrestLocaleCollection;
+    }
+
+    public void setOpsArrestLocaleCollection(Collection<OpsArrestLocale> opsArrestLocaleCollection) {
+        this.opsArrestLocaleCollection = opsArrestLocaleCollection;
+    }
+    
+
+    public Collection<OpsArrestProduct> getOpsArrestProductCollection() {
+        return opsArrestProductCollection;
+    }
+
+    public void setOpsArrestProductCollection(Collection<OpsArrestProduct> opsArrestProductCollection) {
+        this.opsArrestProductCollection = opsArrestProductCollection;
+    }
+    
+    public Collection<OpsArrestLawbreaker> getOpsArrestLawbreakerCollection() {
+        return opsArrestLawbreakerCollection;
+    }
+
+    public void setOpsArrestLawbreakerCollection(Collection<OpsArrestLawbreaker> opsArrestLawbreakerCollection) {
+        this.opsArrestLawbreakerCollection = opsArrestLawbreakerCollection;
+    }
+
+    public Collection<OpsArrestStaff> getOpsArrestStaffCollection() {
+        return opsArrestStaffCollection;
+    }
+
+    public void setOpsArrestStaffCollection(Collection<OpsArrestStaff> opsArrestStaffCollection) {
+        this.opsArrestStaffCollection = opsArrestStaffCollection;
+    }
     
 
     @Override

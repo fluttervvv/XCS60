@@ -20,8 +20,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -29,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Pratin
  */
 @Entity
-@Table(name = "\"ops_arrest_staf\"", catalog = "", schema = "ILLEGAL60")
+@Table(name = "\"ops_arrest_staff\"", catalog = "", schema = "ILLEGAL60")
 @NamedQueries({
     @NamedQuery(name = "OpsArrestStaff.findAll", query = "SELECT o FROM OpsArrestStaff o")
     , @NamedQuery(name = "OpsArrestStaff.findByStaffID", query = "SELECT o FROM OpsArrestStaff o WHERE o.staffID = :staffID")
@@ -123,10 +125,12 @@ public class OpsArrestStaff implements Serializable {
     @Column(name ="\"IsActive\"")
     @JsonProperty("IsActive")
     private short isActive;
+    
 //    @JoinColumn(name ="\"StaffCode", referencedColumnName ="\"StaffCode\"")
 //    @ManyToOne
 //    private MasStaff staffCode;
-//    @JoinColumn(name ="\"ArrestCode", referencedColumnName ="\"ArrestCode\"")
+//    
+//    @JoinColumn(name ="\"ArrestCode\"", referencedColumnName ="\"ArrestCode\"")
 //    @ManyToOne
 //    private OpsArrest arrestCode;
 
@@ -313,6 +317,9 @@ public class OpsArrestStaff implements Serializable {
 //    public OpsArrest getArrestCode() {
 //        return arrestCode;
 //    }
+//    
+//
+//    
 //
 //    public void setArrestCode(OpsArrest arrestCode) {
 //        this.arrestCode = arrestCode;

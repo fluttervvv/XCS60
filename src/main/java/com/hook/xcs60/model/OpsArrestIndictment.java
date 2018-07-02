@@ -83,8 +83,8 @@ public class OpsArrestIndictment implements Serializable {
 //    private OpsArrest arrestCode;
 //    @OneToMany(cascade = CascadeType.ALL, mappedBy = "indictmentID")
 //    private Collection<OpsLawsuit> opsLawsuitCollection;
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "indictmentID")
-//    private Collection<OpsArrestIndicmentDetail> opsArrestIndicmentDetailCollection;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "indictmentID")
+	private Collection<OpsArrestIndicmentDetail> opsArrestIndicmentDetailCollection;
 //    @OneToMany(mappedBy = "indictmentID")
 //    private Collection<OpsProve> opsProveCollection;
     
@@ -147,14 +147,14 @@ public class OpsArrestIndictment implements Serializable {
 //        this.opsLawsuitCollection = opsLawsuitCollection;
 //    }
 //
-//    @XmlTransient
-//    public Collection<OpsArrestIndicmentDetail> getOpsArrestIndicmentDetailCollection() {
-//        return opsArrestIndicmentDetailCollection;
-//    }
-//
-//    public void setOpsArrestIndicmentDetailCollection(Collection<OpsArrestIndicmentDetail> opsArrestIndicmentDetailCollection) {
-//        this.opsArrestIndicmentDetailCollection = opsArrestIndicmentDetailCollection;
-//    }
+    
+    public Collection<OpsArrestIndicmentDetail> getOpsArrestIndicmentDetailCollection() {
+        return opsArrestIndicmentDetailCollection;
+    }
+
+    public void setOpsArrestIndicmentDetailCollection(Collection<OpsArrestIndicmentDetail> opsArrestIndicmentDetailCollection) {
+        this.opsArrestIndicmentDetailCollection = opsArrestIndicmentDetailCollection;
+    }
 //
 //    @XmlTransient
 //    public Collection<OpsProve> getOpsProveCollection() {
