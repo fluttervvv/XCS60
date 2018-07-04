@@ -3,6 +3,7 @@ package com.hook.xcs60.controllers;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import com.hook.xcs60.model.OpsArrestIndictment;
 import com.hook.xcs60.utils.ResponseBuilder;
 import com.hook.xcs60.dto.ArrestIndicment.*;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 public class ArrestIndictmentController {
 

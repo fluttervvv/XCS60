@@ -17,7 +17,9 @@ import com.hook.xcs60.dto.BaseApiResponse;
 import com.hook.xcs60.dto.KeywordRequest;
 import com.hook.xcs60.model.Arrest;
 import com.hook.xcs60.model.OpsArrest;
+import com.hook.xcs60.utils.DateUtil;
 import com.hook.xcs60.utils.ResponseBuilder;
+
 
 @RestController
 public class ArrestController {
@@ -87,6 +89,8 @@ public class ArrestController {
 	public Object ArrestinsAll(@RequestBody OpsArrest arrest) {
 		try {
 			if (!arrestRepository.existsById(arrest.getArrestCode())) {
+				arrest.setOccurrenceDate(DateUtil.removeTime(arrest.getArrestDate()));
+				arrest.setArrestDate(DateUtil.removeTime(arrest.getArrestTime()));
 				arrestRepository.save(arrest);
 				return ResponseBuilder.Success();
 			}

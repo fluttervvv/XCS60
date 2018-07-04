@@ -91,14 +91,14 @@ public class OpsArrest implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "arrestCode")
     private Collection<OpsArrestLocale> opsArrestLocaleCollection;
     
-    @OneToMany(mappedBy = "arrestCode")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "arrestCode")
     private Collection<OpsArrestProduct> opsArrestProductCollection;
     
-    @OneToMany(mappedBy = "arrestCode")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "arrestCode")
     private Collection<OpsArrestLawbreaker> opsArrestLawbreakerCollection;
     
 
-    @OneToMany(mappedBy = "arrestCode")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "arrestCode")
     private Collection<OpsArrestStaff> opsArrestStaffCollection;
     
 
