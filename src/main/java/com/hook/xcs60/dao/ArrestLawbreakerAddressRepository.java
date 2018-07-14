@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.hook.xcs60.model.OpsArrestLawbreakerAddress;
 
-public interface ArrestLawbreakerAddressRepository  extends CrudRepository<OpsArrestLawbreakerAddress, String> {
+public interface ArrestLawbreakerAddressRepository extends CrudRepository<OpsArrestLawbreakerAddress, String> {
 	@Query("SELECT o FROM OpsArrestLawbreakerAddress o WHERE  o.lawbreakerID = :lawbreakerID") 
 	List<OpsArrestLawbreakerAddress> findByLawbreakerID(@Param("lawbreakerID") BigDecimal lawbreakerID);
 	
