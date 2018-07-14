@@ -20,7 +20,10 @@ public interface MasLawGroupSectionRepository extends CrudRepository<MasLawGroup
 			+ "OR m.sectionDesc3 LIKE %:keyword% "
 			+ "OR ms.subSectionDesc LIKE %:keyword% "
 			+ "OR mb.guiltBaseName LIKE %:keyword% "
-			+ ")"
+			+ ") "
+			+ "AND ms.isActive = 1 "
+			+ "AND mr.isActive = 1 "
+			+ "AND mb.isActive = 1 "
 			)
 	List<MasLawGroupSection> ArrestMasLawGroupSectongetByKeyword(@Param("keyword")String keyword);
 
